@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="description" content="Страница благодарности за обращение. Спасибо за ваше доверие и поддержку.">
+    <title>Спасибо | Благодарность</title>
+    <!-- Google Fonts + Font Awesome 6 -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, sans-serif;
+            background: linear-gradient(135deg, #f8faff 0%, #eef2ff 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Декоративные элементы фона */
+        body::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.08) 0%, rgba(99, 102, 241, 0) 70%);
+            top: -100px;
+            left: -100px;
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        body::after {
+            content: '';
+            position: absolute;
+            width: 450px;
+            height: 450px;
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.06) 0%, rgba(168, 85, 247, 0) 70%);
+            bottom: -150px;
+            right: -150px;
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        /* Контейнер для карточки */
+        .container {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-width: 680px;
+            margin: 0 auto;
+        }
+
+        /* Карточка благодарности */
+        .thanks-card {
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(0px);
+            border-radius: 2.5rem;
+            padding: 2.8rem 2.2rem;
+            box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.2), 0 4px 12px rgba(0, 0, 0, 0.03);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: cardFloatIn 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .thanks-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 35px 50px -18px rgba(0, 0, 0, 0.25);
+        }
+
+        /* Анимация появления карточки */
+        @keyframes cardFloatIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.96) translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        /* Иконка-галочка */
+        .icon-wrapper {
+            margin-bottom: 1.5rem;
+        }
+
+        .check-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(145deg, #10b981, #059669);
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            box-shadow: 0 15px 25px -8px rgba(16, 185, 129, 0.4);
+            animation: bounceCheck 0.6s ease-out 0.2s both;
+        }
+
+        .check-icon i {
+            font-size: 3.8rem;
+            color: white;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+        }
+
+        @keyframes bounceCheck {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* Заголовок */
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #1e293b, #2d3a5e);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.02em;
+        }
+
+        .lead-text {
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: #0f172a;
+            margin-bottom: 1rem;
+            border-left: 4px solid #10b981;
+            padding-left: 1rem;
+            display: inline-block;
+            background: #f0fdf9;
+            border-radius: 40px;
+            padding: 0.4rem 1.2rem;
+            background: rgba(16, 185, 129, 0.08);
+        }
+
+        .message {
+            color: #334155;
+            line-height: 1.55;
+            font-size: 1rem;
+            margin: 1.5rem 0 1rem;
+            max-width: 480px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .highlight {
+            font-weight: 500;
+            color: #0f3b2c;
+            background: #e6f7f0;
+            display: inline-block;
+            padding: 0 0.2rem;
+            border-radius: 8px;
+        }
+
+        /* Блок с деталями (номер обращения, дата) */
+        .details-block {
+            background: #f8fafc;
+            border-radius: 1.5rem;
+            padding: 1.2rem 1.5rem;
+            margin: 1.8rem 0 1.5rem;
+            text-align: left;
+            border: 1px solid #e2e8f0;
+            transition: all 0.2s;
+        }
+
+        .detail-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 0.95rem;
+            padding: 0.5rem 0;
+            color: #1e293b;
+            border-bottom: 1px dashed #e2edf2;
+        }
+
+        .detail-item:last-child {
+            border-bottom: none;
+        }
+
+        .detail-item i {
+            width: 28px;
+            color: #10b981;
+            font-size: 1.2rem;
+            text-align: center;
+        }
+
+        .detail-item strong {
+            font-weight: 600;
+            min-width: 110px;
+            color: #0f172a;
+        }
+
+        .detail-item span {
+            font-family: monospace;
+            font-weight: 500;
+            background: #ffffff;
+            padding: 0.2rem 0.6rem;
+            border-radius: 30px;
+            letter-spacing: 0.3px;
+            color: #0b3b2c;
+            font-size: 0.9rem;
+        }
+
+        .ref-code {
+            font-family: 'SF Mono', 'Fira Code', monospace;
+            font-weight: 600;
+            background: #eef2ff;
+            color: #1e40af;
+        }
+
+        /* Кнопка */
+        .btn-home {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: linear-gradient(95deg, #0f172a, #1e293b);
+            color: white;
+            font-weight: 600;
+            font-size: 1rem;
+            padding: 0.9rem 2.2rem;
+            border-radius: 60px;
+            text-decoration: none;
+            transition: all 0.25s ease;
+            margin-top: 0.5rem;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-home i {
+            transition: transform 0.2s;
+        }
+
+        .btn-home:hover {
+            background: linear-gradient(95deg, #111827, #0f172a);
+            transform: scale(1.02);
+            box-shadow: 0 12px 20px -10px rgba(0, 0, 0, 0.25);
+        }
+
+        .btn-home:hover i {
+            transform: translateX(-4px);
+        }
+
+        /* Дополнительная фраза */
+        .extra-thanks {
+            margin-top: 2rem;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .extra-thanks i {
+            font-size: 0.8rem;
+            color: #f59e0b;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 550px) {
+            .thanks-card {
+                padding: 1.8rem 1.2rem;
+                border-radius: 1.8rem;
+            }
+
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            .check-icon {
+                width: 75px;
+                height: 75px;
+            }
+
+            .check-icon i {
+                font-size: 2.8rem;
+            }
+
+            .lead-text {
+                font-size: 1rem;
+            }
+
+            .detail-item strong {
+                min-width: 85px;
+                font-size: 0.85rem;
+            }
+
+            .detail-item {
+                gap: 0.5rem;
+                flex-wrap: wrap;
+            }
+
+            .btn-home {
+                padding: 0.7rem 1.6rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Дополнительная мини-анимация для текста */
+        .fade-text {
+            animation: fadeSlide 0.5s ease-out 0.3s both;
+        }
+
+        @keyframes fadeSlide {
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="thanks-card">
+        <div class="icon-wrapper">
+            <div class="check-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+        </div>
+
+        <h1>Спасибо!</h1>
+        <div class="lead-text">Ваше обращение принято</div>
+
+        <p class="message fade-text">
+            Мы искренне благодарим вас за доверие и обратную связь.  
+            Наша команда уже получила ваше сообщение и <span class="highlight">свяжется с вами в ближайшее время</span>. 
+            Вы очень важны для нас!
+        </p>
+
+        <!-- Блок с персональными данными (номер обращения + дата) -->
+        <div class="details-block fade-text">
+            <div class="detail-item">
+                <i class="fas fa-ticket-alt"></i>
+                <strong>Номер обращения:</strong>
+                <span id="orderRef" class="ref-code">Генерация...</span>
+            </div>
+            <div class="detail-item">
+                <i class="far fa-calendar-alt"></i>
+                <strong>Дата получения:</strong>
+                <span id="currentDate"></span>
+            </div>
+            <div class="detail-item">
+                <i class="far fa-clock"></i>
+                <strong>Время:</strong>
+                <span id="currentTime"></span>
+            </div>
+        </div>
+
+        <!-- Кнопка возврата на главную -->
+        <a href="/" class="btn-home" id="homeButton">
+            <i class="fas fa-arrow-left"></i> Вернуться на главную
+        </a>
+
+        <div class="extra-thanks">
+            <i class="fas fa-heart" style="color:#ec489a;"></i>
+            <span>Мы ценим каждого клиента</span>
+            <i class="fas fa-smile-wink"></i>
+        </div>
+    </div>
+</div>
+
+<script>
+    (function() {
+        // --- Генерация уникального номера обращения в стиле THX-XXXX-XXXX ---
+        function generateReference() {
+            // Генерируем две группы по 4 символа (буквы + цифры в верхнем регистре)
+            const generateGroup = () => {
+                return Math.random().toString(36).substring(2, 6).toUpperCase();
+            };
+            const group1 = generateGroup();
+            const group2 = generateGroup();
+            // Делаем так, чтобы номер выглядел как THX-ABC1-9D2F
+            return `THX-${group1}-${group2}`;
+        }
+
+        // --- Форматирование даты и времени (ru) ---
+        function formatDate() {
+            const now = new Date();
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            return now.toLocaleDateString('ru-RU', options);
+        }
+
+        function formatTime() {
+            const now = new Date();
+            return now.toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+        }
+
+        // Обновляем элементы DOM
+        const refSpan = document.getElementById('orderRef');
+        const dateSpan = document.getElementById('currentDate');
+        const timeSpan = document.getElementById('currentTime');
+
+        if (refSpan) {
+            refSpan.textContent = generateReference();
+        }
+        if (dateSpan) {
+            dateSpan.textContent = formatDate();
+        }
+        if (timeSpan) {
+            timeSpan.textContent = formatTime();
+        }
+
+        // Небольшая «защита» от перехода по пустому href, если в реальности главная страница отсутствует.
+        // Просто демонстрационный эффект, но ссылка ведёт на "/". Для локального просмотра оставляем как есть.
+        // Если нужно предотвратить переход в демо-режиме, раскомментировать блок ниже,
+        // но в реальном проекте ссылка должна работать. Оставим стандартное поведение.
+        // Тем не менее, для наглядности добавим консольное сообщение о перенаправлении (необязательно).
+        const homeBtn = document.getElementById('homeButton');
+        if (homeBtn) {
+            homeBtn.addEventListener('click', function(e) {
+                // Если вы тестируете локально и главной страницы нет, можно предупредить, но это необязательно.
+                // В реальном окружении ссылка ведёт на главную. Просто оставляем навигацию.
+                // Чтобы страница не выглядела «сломанной» в демо, можно добавить небольшой лог.
+                console.log('Перенаправление на главную страницу...');
+                // Если вы хотите полностью имитировать без перехода (для чистого превью) - раскомментируйте следующую строку:
+                // e.preventDefault(); alert('Демо-режим: переход на главную страницу в реальном проекте');
+                // Но по умолчанию переход разрешён — ссылка работает.
+            });
+        }
+
+        // Дополнительный эффект: легкое обновление времени при фокусе? не требуется.
+        // Можно добавить анимацию появления для деталей с небольшой задержкой.
+        const detailsBlock = document.querySelector('.details-block');
+        if (detailsBlock) {
+            detailsBlock.style.opacity = '0';
+            detailsBlock.style.transform = 'translateY(8px)';
+            setTimeout(() => {
+                detailsBlock.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+                detailsBlock.style.opacity = '1';
+                detailsBlock.style.transform = 'translateY(0)';
+            }, 250);
+        }
+
+        // Также делаем плавное появление для кнопки и extra-thanks
+        const btn = document.querySelector('.btn-home');
+        const extra = document.querySelector('.extra-thanks');
+        if (btn) {
+            btn.style.opacity = '0';
+            setTimeout(() => {
+                btn.style.transition = 'opacity 0.4s ease';
+                btn.style.opacity = '1';
+            }, 320);
+        }
+        if (extra) {
+            extra.style.opacity = '0';
+            setTimeout(() => {
+                extra.style.transition = 'opacity 0.5s ease';
+                extra.style.opacity = '1';
+            }, 400);
+        }
+    })();
+</script>
+</body>
+</html>
